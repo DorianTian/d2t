@@ -1,8 +1,26 @@
 "use client";
 import { useState } from "react";
 
+// Define response type interfaces
+interface DebugResponse {
+  message: string;
+  timestamp: string;
+  environment: string | undefined;
+  api_base_url: string;
+}
+
+interface AskQAResponse {
+  sql?: string;
+  results?: Array<Record<string, unknown>>;
+  analysis?: string;
+  error?: string;
+}
+
+// Union type for all possible responses
+type ApiResponse = DebugResponse | AskQAResponse;
+
 export default function TestPage() {
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
