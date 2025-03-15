@@ -4,6 +4,7 @@ import (
 	"d2t_server/core"
 	"d2t_server/model"
 	"d2t_server/utils"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,7 @@ func RegisterRoutes(r *gin.Engine) {
 	})
 
 	r.POST("/api/askQA", func(c *gin.Context) {
+		fmt.Println("==== /api/askQA was called ====")
 		var req struct {
 			Question string `json:"question"`
 		}
