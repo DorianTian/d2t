@@ -146,7 +146,7 @@ INSERT INTO Products(prod_id, vend_id, prod_name, prod_price, prod_desc)
 VALUES ('RYL01', 'FNG01', 'King doll', 9.49, '12 inch king doll with royal garments and crown');
 INSERT INTO Products(prod_id, vend_id, prod_name, prod_price, prod_desc)
 VALUES ('RYL02', 'FNG01', 'Queen doll', 9.49, '12 inch queen doll with royal garments and crown');
-；
+;
 ------------------------
 -- Populate Orders table
 ------------------------

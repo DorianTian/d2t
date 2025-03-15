@@ -14,23 +14,20 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./pg-init-scripts:/docker-entrypoint-initdb.d
-    # --- Go backend service (placeholder) ---
-    # go-backend:
-    #   build: ./go-backend
-    #   container_name: go_service
-    #   ports:
-    #     - "8080:8080"
-    #   depends_on:
-    #     - postgres
-    #     - deepseek
-    #   # environment, volumes, etc.
-
-    # --- Deepseek (Python) service (placeholder) ---
-    # deepseek:
-    #   build: ./deepseek
-    #   container_name: deepseek_service
-    #   ports:
-    #     - "9000:9000"
-    #   # environment, volumes, etc.
+    # --- Go backend service ---
+  go-backend:
+    build: ./be-server
+    container_name: go_service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      # 这里注入数据库连接信息给 Go 应用
+      DB_HOST: localhost
+      DB_PORT: "5432"
+      DB_USER: Dorian
+      DB_PASS: tqy4468
+      DB_NAME: d2t_db
 volumes:
   pgdata:
