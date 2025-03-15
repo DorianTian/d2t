@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # --- PostgreSQL service ---
+  postgres:
+    image: postgres:14
+    container_name: d2t_postgres
+    environment:
+      - POSTGRES_USER=Dorian
+      - POSTGRES_PASSWORD=tqy4468
+      - POSTGRES_DB=d2t_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
+    # --- Go backend service (placeholder) ---
+    # go-backend:
+    #   build: ./go-backend
+    #   container_name: go_service
+    #   ports:
+    #     - "8080:8080"
+    #   depends_on:
+    #     - postgres
+    #     - deepseek
+    #   # environment, volumes, etc.
+
+    # --- Deepseek (Python) service (placeholder) ---
+    # deepseek:
+    #   build: ./deepseek
+    #   container_name: deepseek_service
+    #   ports:
+    #     - "9000:9000"
+    #   # environment, volumes, etc.
+volumes:
+  pgdata:
