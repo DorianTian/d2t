@@ -17,9 +17,6 @@ func RegisterRoutes(r *gin.Engine) {
 
 	r.POST("/api/askQA", func(c *gin.Context) {
 		fmt.Println("==== /api/askQA was called ====")
-		var req struct {
-			Question string `json:"question"`
-		}
 
 		c.JSON(http.StatusOK, gin.H{"hello": "world"})
 
