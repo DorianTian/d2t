@@ -21,6 +21,8 @@ func RegisterRoutes(r *gin.Engine) {
 			Question string `json:"question"`
 		}
 
+		c.JSON(http.StatusOK, gin.H{"hello": "world"})
+
 		if err := c.ShouldBindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
