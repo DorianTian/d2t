@@ -18,7 +18,10 @@ func RegisterRoutes(r *gin.Engine) {
 	r.POST("/api/askQA", func(c *gin.Context) {
 		fmt.Println("==== /api/askQA was called ====")
 
-		c.JSON(http.StatusOK, gin.H{"hello": "world"})
+		// 定义请求结构体
+		var req struct {
+			Question string `json:"question"`
+		}
 
 		if err := c.ShouldBindJSON(&req); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
