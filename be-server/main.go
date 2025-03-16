@@ -4,21 +4,12 @@ import (
 	"d2t_server/routes"
 	"flag"
 	"log"
-	"net/http"
 	"os"
 	"path/filepath"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
-
-// 通用响应结构
-type Response struct {
-	Status    string      `json:"status"`
-	Timestamp string      `json:"timestamp"`
-	Data      interface{} `json:"data,omitempty"`
-}
 
 func main() {
 	envFile := flag.String("env", "", "Path to .env file")
@@ -62,9 +53,6 @@ func main() {
 	// 设置Gin框架
 	r := gin.Default()
 
-	// 添加健康检查路由
-	r.GET("/health", healthCheckHandler)
-
 	// 注册其他路由
 	routes.RegisterRoutes(r)
 
@@ -80,15 +68,4 @@ func main() {
 	if err := r.Run(":" + port); err != nil {
 		log.Fatalf("Failed to run server: %v", err)
 	}
-}
-
-// 健康检查处理函数 - 使用Gin框架格式
-func healthCheckHandler(c *gin.Context) {
-	// 构造响应
-	response := Response{
-		Status:    "ok",
-		Timestamp: time.Now().Format(time.RFC3339),
-	}
-
-	c.JSON(http.StatusOK, response)
 }

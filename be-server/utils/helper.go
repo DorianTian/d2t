@@ -9,7 +9,16 @@ import (
 	"net/http"
 	"regexp"
 	"strings"
+	"time"
+
+	"github.com/gin-gonic/gin"
 )
+
+type Response struct {
+	Status    string      `json:"status"`
+	Timestamp string      `json:"timestamp"`
+	Data      interface{} `json:"data,omitempty"`
+}
 
 func getAskURL() string {
 	return "https://api.deepseek.com/chat/completions"
@@ -223,4 +232,15 @@ func TrimStringValues(results []map[string]interface{}) []map[string]interface{}
 	}
 
 	return trimmedResults
+}
+
+// 健康检查处理函数 - 使用Gin框架格式
+func HealthCheckHandler(c *gin.Context) {
+	// 构造响应
+	response := Response{
+		Status:    "ok",
+		Timestamp: time.Now().Format(time.RFC3339),
+	}
+
+	c.JSON(http.StatusOK, response)
 }
