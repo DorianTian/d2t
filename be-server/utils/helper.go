@@ -2,6 +2,7 @@ package utils
 
 import (
 	"bytes"
+	"d2t_server/internal/config"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -104,8 +105,15 @@ func DeepseekRequest(input string, mode string, schema ...string) (string, error
 	apiKey := "sk-05560ff5cfcf472188f269aff3fb053b"
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", apiKey))
 
-	// Send request
-	client := &http.Client{}
+	// Get API timeout config
+	apiConfig := config.GetAPIConfig()
+
+	// Send request with timeout
+	client := &http.Client{
+		Timeout: apiConfig.Timeout,
+	}
+
+	log.Printf("Making API request with timeout of %v seconds", apiConfig.Timeout.Seconds())
 	resp, err := client.Do(req)
 	if err != nil {
 		return "", fmt.Errorf("请求失败: %v", err)
