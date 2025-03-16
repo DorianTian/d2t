@@ -2,6 +2,8 @@
 
 DeepSeek2Web is a web application that provides a user interface for interacting with the DeepSeek AI model, with a modern Next.js frontend and a Go-based backend.
 
+**🔗 Live Preview:** [http://3.27.63.61/](http://3.27.63.61/) - Check out the live demo!
+
 ## Project Overview
 
 This project is a full-stack web application that consists of:
