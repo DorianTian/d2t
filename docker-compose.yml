@@ -38,6 +38,7 @@ services:
       DB_USER: Dorian
       DB_PASS: tqy4468
       DB_NAME: d2t_db
+      DB_PASSWORD: tqy4468
       # 其他环境变量
       GO_ENV: production
     networks:
