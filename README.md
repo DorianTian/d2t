@@ -32,8 +32,15 @@ This project is a full-stack web application that consists of:
 ├── deepseek-server/     # DeepSeek AI model server (placeholder)
 └── docker-compose.yml   # Docker Compose configuration for the entire stack
 ```
-![系统架构](statics/architecture.svg)
-![数据流](statics/Untitled-2025-03-16-2026.svg)
+
+### System Architecture
+
+![System Architecture](statics/architecture.svg)
+
+### Data Flow 
+
+![Data Flow Diagram](statics/Untitled-2025-03-16-2026.svg)
+
 ## Components
 
 ### Go Backend Service (be-server)
